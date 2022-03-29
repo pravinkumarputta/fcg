@@ -46,9 +46,9 @@ class WidgetCommand extends Command {
     // [argResults] is set before [run()] is called and contains the flags/options
     // passed to this command.
     _createWidget(
-      argResults['name'].toLowerCase(),
-      argResults['with-dir'],
-      argResults['stateful'],
+      argResults!['name'].toLowerCase(),
+      argResults!['with-dir'],
+      argResults!['stateful'],
     );
   }
 

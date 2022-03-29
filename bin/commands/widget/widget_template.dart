@@ -38,7 +38,7 @@ class _@NameState extends State<@Name> {
 export '@name.dart';
   ''';
 
-  void create(String name, {String path, bool stateful = false}) {
+  void create(String name, {String? path, bool stateful = false}) {
     var widgetName =
         name.split('_').map((e) => e.capitalize()).toList().join('');
 

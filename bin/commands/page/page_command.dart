@@ -46,9 +46,9 @@ class PageCommand extends Command {
     // [argResults] is set before [run()] is called and contains the flags/options
     // passed to this command.
     _createPage(
-      argResults['name'].toLowerCase(),
-      argResults['suffix'].toLowerCase(),
-      argResults['with-dir'],
+      argResults!['name'].toLowerCase(),
+      argResults!['suffix'].toLowerCase(),
+      argResults!['with-dir'],
     );
   }
 

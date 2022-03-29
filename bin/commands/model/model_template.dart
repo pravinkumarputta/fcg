@@ -1,6 +1,7 @@
 import 'dart:io';
 import '../../utils/common_utils.dart';
 import '../../utils/extensions.dart';
+import '../../utils/json_to_dart/json_to_dart.dart';
 
 class ModelTemplate {
   final _template = '''
@@ -51,7 +52,7 @@ class @Name extends Equatable {
 export '@name.dart';
   ''';
 
-  void create(String name, {String path}) {
+  void create(String name, {String? path, String? source}) {
     var modelName =
         name.split('_').map((e) => e.capitalize()).toList().join('');
 
@@ -61,14 +62,26 @@ export '@name.dart';
     // file path
     var filePath = path + '/' + name + '.dart';
 
-    File(filePath)
-      ..createSync()
-      ..writeAsStringSync(_template.replaceAll('@Name', modelName));
+    if (source == null) {
+      File(filePath)
+        ..createSync()
+        ..writeAsStringSync(_template.replaceAll('@Name', modelName));
+    } else {
+      var dartCode = generateModel(modelName, source);
+      var finalCode = '''
+import 'package:equatable/equatable.dart';
+
+${dartCode.code}
+  ''';
+      File(filePath)
+        ..createSync()
+        ..writeAsStringSync(finalCode);
+    }
 
     print('Model created at ' + filePath);
   }
 
-  void createDir(String name, {String dirName = 'models'}) {
+  void createDir(String name, {String dirName = 'models', String? source}) {
     // extract root path from name
     var namePath = CommonUtils.extractNamePath(name);
     name = namePath.name;
@@ -81,7 +94,7 @@ export '@name.dart';
     Directory(modelDirPath).createSync(recursive: true);
 
     // create model
-    create(name, path: modelDirPath);
+    create(name, path: modelDirPath, source: source);
 
     // model export file path
     var modelExportFilePath = modelDirPath + '/$dirName.dart';

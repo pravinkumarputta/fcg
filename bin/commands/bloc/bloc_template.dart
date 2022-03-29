@@ -106,7 +106,7 @@ export '@name_event.dart';
 export '@name_state.dart';
   ''';
 
-  void create(String name, {String path}) {
+  void create(String name, {String? path}) {
     // extract root path from name
     var namePath = CommonUtils.extractNamePath(name);
     name = namePath.name;

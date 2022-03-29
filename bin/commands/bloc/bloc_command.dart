@@ -33,6 +33,6 @@ class BlocCommand extends Command {
   void run() {
     // [argResults] is set before [run()] is called and contains the flags/options
     // passed to this command.
-    BlocTemplate().create(argResults['name'].toLowerCase());
+    BlocTemplate().create(argResults!['name'].toLowerCase());
   }
 }

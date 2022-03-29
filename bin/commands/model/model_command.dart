@@ -14,7 +14,7 @@ class ModelCommand extends Command {
 
   @override
   final invocation =
-      'fcg model --name <path>/model_name [--dir-name <value>] [--with-dir]';
+      'fcg model --name <path>/model_name [--dir-name <value>] [--with-dir] [--source=<json_file_path>]';
 
   @override
   final aliases = ['m'];
@@ -27,6 +27,11 @@ class ModelCommand extends Command {
       abbr: 'n',
       mandatory: true,
       help: 'Create model with given name.',
+    );
+    argParser.addOption(
+      'source',
+      defaultsTo: null,
+      help: 'Create model folder with json using json_to_dart plugin.',
     );
     argParser.addOption(
       'dir-name',
@@ -46,32 +51,38 @@ class ModelCommand extends Command {
     // [argResults] is set before [run()] is called and contains the flags/options
     // passed to this command.
     _createModel(
-      argResults['name'].toLowerCase(),
-      argResults['with-dir'],
-      argResults['dir-name'].toLowerCase(),
+      argResults!['name'].toLowerCase(),
+      argResults!['with-dir'],
+      argResults!['dir-name'].toLowerCase(),
+      argResults!['source']?.toLowerCase(),
     );
   }
 
-  void _createModel(String name, bool withDir, String dirName) {
+  void _createModel(String name, bool withDir, String dirName, String? source) {
     if (withDir) {
       // create model with directory
-      _createModelWithDir(name, dirName);
+      _createModelWithDir(name, dirName, source);
     } else {
       // create model without directory
-      _createModelWithoutDir(name);
+      _createModelWithoutDir(name, source);
     }
   }
 
-  void _createModelWithDir(String name, String dirName) {
-    ModelTemplate().createDir(name, dirName: dirName);
+  void _createModelWithDir(String name, String dirName, String? source) {
+    ModelTemplate().createDir(
+      name,
+      dirName: dirName,
+      source: source,
+    );
   }
 
-  void _createModelWithoutDir(String name) {
+  void _createModelWithoutDir(String name, String? source) {
     // extract root path from name
     var namePath = CommonUtils.extractNamePath(name);
     ModelTemplate().create(
       namePath.name,
       path: namePath.path,
+      source: source,
     );
   }
 }

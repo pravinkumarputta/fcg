@@ -33,6 +33,6 @@ class RepositoryCommand extends Command {
   void run() {
     // [argResults] is set before [run()] is called and contains the flags/options
     // passed to this command.
-    RepositoryTemplate().create(argResults['name'].toLowerCase());
+    RepositoryTemplate().create(argResults!['name'].toLowerCase());
   }
 }

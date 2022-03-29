@@ -34,7 +34,7 @@ class _@NameState extends State<@Name> {
 export '@name.dart';
   ''';
 
-  void create(String name, {String path, String suffix = 'page'}) {
+  void create(String name, {String? path, String suffix = 'page'}) {
     var pageName = (name + '_' + suffix)
         .split('_')
         .map((e) => e.capitalize())

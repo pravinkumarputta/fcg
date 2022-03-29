@@ -34,6 +34,7 @@ Usage: fcg bloc [arguments]
 Usage: fcg model [arguments]
 -h, --help                Print this usage information.
 -n, --name (mandatory)    Create model with given name or full path.
+    --source              Create model folder with json using json_to_dart plugin.
     --dir-name            Create model folder with given name.
                           (defaults to "models")
     --with-dir            It creates flutter model with directory.

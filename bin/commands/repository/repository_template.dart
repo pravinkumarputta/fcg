@@ -28,7 +28,7 @@ export '@name_repository.dart';
 export '@name_repository_impl.dart';
   ''';
 
-  void create(String name, {String path}) {
+  void create(String name, {String? path}) {
     // extract root path from name
     var namePath = CommonUtils.extractNamePath(name);
     name = namePath.name;

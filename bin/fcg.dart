@@ -21,5 +21,4 @@ void main(List<String> arguments) {
     print(error);
     exit(64); // Exit code 64 indicates a usage error.
   });
-  ;
 }
