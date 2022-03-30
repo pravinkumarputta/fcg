@@ -5,3 +5,7 @@
 ## 1.0.1
 
 - Added model creation from the given JSON file.
+
+## 1.0.2
+
+- Doc updated.

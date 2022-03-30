@@ -24,16 +24,20 @@ Available commands:
 
 ### Bloc Command
 ```
-Usage: fcg bloc [arguments]
+Option name is mandatory.
+
+Usage: fcg bloc --name <path>/bloc_name
 -h, --help                Print this usage information.
--n, --name (mandatory)    Create bloc with given name or full path.
+-n, --name (mandatory)    Create bloc with given name.
 ```
 
 ### Model Command
 ```
-Usage: fcg model [arguments]
+Option name is mandatory.
+
+Usage: fcg model --name <path>/model_name [--dir-name <value>] [--with-dir] [--source=<json_file_path>]
 -h, --help                Print this usage information.
--n, --name (mandatory)    Create model with given name or full path.
+-n, --name (mandatory)    Create model with given name.
     --source              Create model folder with json using json_to_dart plugin.
     --dir-name            Create model folder with given name.
                           (defaults to "models")
@@ -42,9 +46,11 @@ Usage: fcg model [arguments]
 
 ### Page Command
 ```
-Usage: fcg page [arguments]
+Option name is mandatory.
+
+Usage: fcg page --name <path>/page_name [--suffix <value>] [--with-dir]
 -h, --help                Print this usage information.
--n, --name (mandatory)    Create page with given name or full path.
+-n, --name (mandatory)    Create page with given name.
     --suffix              Appends the given suffix at the end of file.
                           (defaults to "page")
     --with-dir            It creates flutter page with directory.
@@ -52,19 +58,27 @@ Usage: fcg page [arguments]
 
 ### Repository Command
 ```
-Usage: fcg repository [arguments]
+Option name is mandatory.
+
+Usage: fcg repository --name <path>/repository_name
 -h, --help                Print this usage information.
--n, --name (mandatory)    Create repository with given name or full path.
+-n, --name (mandatory)    Create repository with given name.
 ```
 
 ### Widget Command
 ```
-Usage: fcg widget [arguments]
+Option name is mandatory.
+
+Usage: fcg widget --name <path>/widget_name [--stateful] [--with-dir]
 -h, --help                Print this usage information.
--n, --name (mandatory)    Create widget with given name or full path.
+-n, --name (mandatory)    Create widget with given name.
     --stateful            Create stateful widget.
     --with-dir            It creates flutter widget with directory.
 ```
+
+# Credits
+
+[JSON to Dart by Javier Lecuona](https://javiercbk.github.io/json_to_dart/).
 
 # License
 
