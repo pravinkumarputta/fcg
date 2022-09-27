@@ -12,7 +12,7 @@ class @Name extends StatefulWidget {
   static route() => '@Name';
 
   @override
-  _@NameState createState() => _@NameState();
+  State<@Name> createState() => _@NameState();
 }
 
 class _@NameState extends State<@Name> {
@@ -43,6 +43,7 @@ export '@name.dart';
 
     // use current dir if not provided
     path ??= Directory.current.path;
+    Directory(path).createSync(recursive: true);
 
     // file path
     var filePath = path + '/' + name + '_' + suffix + '.dart';
